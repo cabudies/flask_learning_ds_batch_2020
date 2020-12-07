@@ -1,16 +1,19 @@
 
-from flask import Flask # library
+from flask import Flask, render_template # library
 ## module - flask
 ## class - Flask
 
 app = Flask(__name__) # initializing object
 
-@app.route("/") # route
+@app.route("/") # route # get
 def index():
-    print("print this message only in console")
-    var = 10
-    # return "hello data science batch - soai" + str(var)
-    return "hello data science batch - soai - {}".format(var)
+    return render_template('index.html')
+
+## routes - > GET, POST
+@app.route("/add")
+def addStudent():
+    return "New Student added"
+
 
 if __name__ == "__main__": # starting point of the application
     app.run(
