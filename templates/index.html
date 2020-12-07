@@ -7,6 +7,12 @@
 </head>
 <body>
     <h1>Hello World - Welcome to SoAI</h1>
-    <a href="{{ url_for('addStudent') }}">Add Student</a>
+    <form action="{{ url_for('addStudent') }}" method="post">
+        Enter your name <input type="text" name="user">
+        <br>
+        Enter your College <input type="text" name="college">
+        <br>
+        <button type="submit" value="submit">Add new Student</button>
+    </form>
 </body>
 </html>

@@ -1,19 +1,23 @@
 
-from flask import Flask, render_template # library
+from flask import Flask, render_template, request# library
 ## module - flask
 ## class - Flask
 
 app = Flask(__name__) # initializing object
 
-@app.route("/") # route # get
+@app.route("/", methods=['GET']) # route # get
 def index():
     return render_template('index.html')
 
 ## routes - > GET, POST
-@app.route("/add")
+@app.route("/add", methods=['POST'])
 def addStudent():
-    return "New Student added"
-
+    data = request.form
+    # print("data====", data)
+    # return "New Student details added"
+    user = data['user']
+    college = data['college']
+    return "Welcome {0}. Your college is: {1}".format(user, college)
 
 if __name__ == "__main__": # starting point of the application
     app.run(
