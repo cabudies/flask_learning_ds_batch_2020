@@ -20,13 +20,6 @@
     {% else %}
     <p>No records found!</p>
     {% endif %}
-
-    <form action="{{ url_for('addStudent') }}" method="post">
-        Enter your name <input type="text" name="user">
-        <br>
-        Enter your College <input type="text" name="college">
-        <br>
-        <button type="submit" value="submit">Add new Student</button>
-    </form>
+    <a href="{{ url_for('addStudent') }}">Add Student</a>
 </body>
 </html>

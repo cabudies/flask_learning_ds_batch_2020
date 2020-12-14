@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request# library
+from flask import Flask, render_template, request, redirect, url_for# library
 ## module - flask
 ## class - Flask
 
@@ -24,18 +24,22 @@ def index():
     return render_template('index.html', studentsList = studentsList)
 
 ## routes - > GET, POST
-@app.route("/add", methods=['POST'])
+@app.route("/add", methods=['GET', 'POST'])
 def addStudent():
-    data = request.form
-    # print("data====", data)
-    # return "New Student details added"
-    user = data['user']
-    college = data['college']
-    studentsList.append({
-        'name': user,
-        'college': college
-    })
-    return "Welcome {0}. Your college is: {1}".format(user, college)
+    if request.method == 'POST': # POST
+        data = request.form
+        # print("data====", data)
+        # return "New Student details added"
+        user = data['user']
+        college = data['college']
+        studentsList.append({
+            'name': user,
+            'college': college
+        })
+        # return "Welcome {0}. Your college is: {1}".format(user, college)
+        return redirect(url_for('index'))
+    else: # GET
+        return render_template('addStudent.html')
 
 @app.route("/delete/<string:name>", methods=['GET'])
 def deleteStudent(name):
