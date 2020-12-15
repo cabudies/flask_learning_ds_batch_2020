@@ -28,8 +28,6 @@ def index():
 def addStudent():
     if request.method == 'POST': # POST
         data = request.form
-        # print("data====", data)
-        # return "New Student details added"
         user = data['user']
         college = data['college']
         studentsList.append({
@@ -52,6 +50,19 @@ def deleteStudent(name):
         del studentsList[indexToBeDeleted]
         return "Student deleted"
     return "Student does not exist"
+
+@app.route("/update/<string:name>", methods=['GET', 'POST'])
+def updateStudent(name):
+    for i in studentsList:
+        if i['name'] == name:
+            # return "Student name is : {0}\nStudent college is: {1}".format(i['name'], i['college'])
+            if request.method == 'POST':
+                data = request.form
+                college = data['college']
+                i['college'] = college
+                return redirect(url_for('index'))
+            else:
+                return render_template('updateStudent.html', student=i)
 
 if __name__ == "__main__": # starting point of the application
     app.run(

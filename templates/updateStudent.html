@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Student</title>
+</head>
+<body>
+    <form action="{{ url_for('updateStudent', name=student['name']) }}" method="post">
+        Enter your name <input type="text" name="name" disabled value="{{ student['name'] }}">
+        <br>
+        Enter your College <input type="text" name="college" value="{{ student['college'] }}" required>
+        <br>
+        <button type="submit" value="submit">Update Student</button>
+    </form>
+</body>
+</html>

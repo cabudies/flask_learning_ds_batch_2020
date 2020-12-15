@@ -13,6 +13,7 @@
         <li>
             Name : {{ student['name'] }}
             College : {{ student['college'] }}
+            <a href="{{ url_for('updateStudent', name=student['name']) }}">Update</a>
             <a href="{{ url_for('deleteStudent', name=student['name']) }}">Delete</a>
         </li>
         {% endfor %}
