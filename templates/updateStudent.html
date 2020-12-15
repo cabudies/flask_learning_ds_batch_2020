@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Update Student</title>
-</head>
-<body>
+
+{% extends 'base.html' %}
+{% block content %}
     <form action="{{ url_for('updateStudent', name=student['name']) }}" method="post">
         Enter your name <input type="text" name="name" disabled value="{{ student['name'] }}">
         <br>
@@ -12,5 +8,4 @@
         <br>
         <button type="submit" value="submit">Update Student</button>
     </form>
-</body>
-</html>
+{% endblock %}

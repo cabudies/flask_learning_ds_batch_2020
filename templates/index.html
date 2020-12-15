@@ -1,12 +1,6 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SOAI</title>
-</head>
-<body>
-    <h1>Welcome to SoAI</h1>
+{% extends 'base.html' %}
+{% block content %}
     {% if studentsList|length>0 %}
     <ul>
         {% for student in studentsList %}
@@ -22,5 +16,4 @@
     <p>No records found!</p>
     {% endif %}
     <a href="{{ url_for('addStudent') }}">Add Student</a>
-</body>
-</html>
+{% endblock %}
